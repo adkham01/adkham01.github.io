@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Java Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0 40px;
+            text-align: center;
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 20px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .skill-tag {
+            background: var(--light);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+        
+        .skill-tag.highlight {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .project-header {
+            background: var(--primary);
+            color: white;
+            padding: 20px;
+        }
+        
+        .project-body {
+            padding: 20px;
+        }
+        
+        .project-body ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .project-body li {
+            margin-bottom: 8px;
+        }
+        
+        .education-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .education-item:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+            background: var(--secondary);
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .education-period {
+            color: var(--gray);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .education-details {
+            margin-top: 15px;
+        }
+        
+        .education-details ul {
+            padding-left: 20px;
+        }
+        
+        .education-details li {
+            margin-bottom: 8px;
+        }
+        
+        .personal-details {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .detail-item {
+            display: flex;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--light);
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            width: 150px;
+            color: var(--primary);
+        }
+        
+        .languages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .language-tag {
+            background: var(--light);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            line-height: 40px;
+            color: white;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            .skills-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1>Your Name</h1>
+            <p class="tagline">Java Developer | Spring Boot | Full Stack</p>
+            <div class="header-buttons">
+                <a href="#projects" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Hard Skills</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag highlight">Java</span>
+                        <span class="skill-tag highlight">Spring Boot</span>
+                        <span class="skill-tag highlight">Microservices</span>
+                        <span class="skill-tag">Design Patterns</span>
+                        <span class="skill-tag">JDBC</span>
+                        <span class="skill-tag">Hibernate ORM</span>
+                        <span class="skill-tag">Spring</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">JUnit5</span>
+                        <span class="skill-tag">Mockito</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Linux</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Strong Team Collaboration</span>
+                        <span class="skill-tag">Communication Skills</span>
+                        <span class="skill-tag">Excellent Team Player</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                        <span class="skill-tag">Problem Solving</span>
+                    </div>
+                    <h3 style="margin-top: 30px;">Development Tools</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">IntelliJ IDEA</span>
+                        <span class="skill-tag">Eclipse</span>
+                        <span class="skill-tag">Maven</span>
+                        <span class="skill-tag">Gradle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" style="background: #f5f7fa;">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>ATM System</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>A comprehensive ATM simulation with user authentication and transaction management.</p>
+                        <ul>
+                            <li>User authentication and account management</li>
+                            <li>Transaction operations: balance check, withdrawal, deposit, and transfer</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Multiple Clients Chat</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Real-time chat application supporting multiple concurrent users.</p>
+                        <ul>
+                            <li>Java socket programming</li>
+                            <li>User authorization</li>
+                            <li>Console-driven interface for ease of use</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Todo Full Stack Application</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Full-stack task management application with modern technologies.</p>
+                        <ul>
+                            <li>Spring Boot, JPA and MySQL backend</li>
+                            <li>React and Bootstrap frontend</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Web Library for Schools</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>A comprehensive library management system for educational institutions.</p>
+                        <ul>
+                            <li>Spring Boot, JPA and PostgreSQL backend</li>
+                            <li>Under development (React and Bootstrap frontend)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Web Library for Schools</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>A student payment management system for educational institutions.</p>
+                        <ul>
+                            <li>Spring Boot, JPA and MySQL backend</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <h3>Universytet Łódzki / Faculty of Mathematics and Computer Science</h3>
+                <p class="education-period">September 2022 - July 2026, Łódź, Poland</p>
+                <div class="education-details">
+                    <ul>
+                        <li>C++ programming language</li>
+                        <li>Linux, Shell scripting</li>
+                        <li>Basics of computer science and algorithms</li>
+                        <li>Collaborated on projects with students</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="education-item">
+                <h3>Samarkand College of Automaking / Land Transport System</h3>
+                <p class="education-period">September 2017 - July 2020, Samarkand</p>
+                <div class="education-details">
+                    <ul>
+                        <li>Automobile construction and repairing</li>
+                        <li>Electro and electronic parts of vehicles</li>
+                        <li>Computer science and information technologies</li>
+                        <li>Experience at MAN Auto and Isuzu SamAuto car factories</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="personal" style="background: #f5f7fa;">
+        <div class="container">
+            <h2 class="section-title">Personal Details</h2>
+            <div class="personal-details">
+                <div class="detail-item">
+                    <div class="detail-label">Nationality:</div>
+                    <div>Uzbek</div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Languages:</div>
+                    <div class="languages">
+                        <span class="language-tag">Uzbek</span>
+                        <span class="language-tag">English</span>
+                        <span class="language-tag">Russian</span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-label">Interests & Hobbies:</div>
+                    <div>Politics, History, Coding</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Feel free to reach out for collaborations or just a friendly hello</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Simple animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.skill-category, .project-card, .education-item').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
